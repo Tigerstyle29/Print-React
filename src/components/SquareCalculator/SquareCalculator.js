@@ -56,13 +56,13 @@ function SquareCalculator() {
           <label htmlFor="square-cm">См<sup>2</sup></label>
           <input type="text" id="square-cm" value={area} readOnly />
         </div>
-        <div>
-          <button onClick={() => calculateArea('A1')}>A1</button>
-          <button onClick={() => calculateArea('A2')}>A2</button>
-          <button onClick={() => calculateArea('A3')}>A3</button>
-          <button onClick={() => calculateArea('A4')}>A4</button>
-          <button onClick={() => calculateArea('A5')}>A5</button>
-          <button onClick={() => calculateArea('A6')}>A6</button>                
+        <div className='bnt-format'>
+          <button className='btn-format__item' onClick={() => calculateArea('A1')}>A1</button>
+          <button className='btn-format__item' onClick={() => calculateArea('A2')}>A2</button>
+          <button className='btn-format__item' onClick={() => calculateArea('A3')}>A3</button>
+          <button className='btn-format__item' onClick={() => calculateArea('A4')}>A4</button>
+          <button className='btn-format__item' onClick={() => calculateArea('A5')}>A5</button>
+          <button className='btn-format__item' onClick={() => calculateArea('A6')}>A6</button>                
         </div>
       </div>
 
@@ -80,7 +80,9 @@ function SquareCalculator() {
           <input type="number" id="diameter" value={diameter} onChange={(e) => setDiameter(e.target.value)} />
         </div>
       </div>
-      <button onClick={updateArea}>Рассчитать площадь</button>
+      <div className='btn'>
+        <button className="btn-item" onClick={updateArea}>Рассчитать площадь</button>
+      </div>
     </div>
   );
 }
