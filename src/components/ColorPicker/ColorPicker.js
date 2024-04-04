@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import './ColorCalculator.css'
+import './ColorPicker.css'
 
-function ColorCalculator() {
+function ColorPicker() {
   const [inputCode, setInputCode] = useState('')
   const [color, setColor] = useState('')
   const [colorType, setColorType] = useState('pantone')
@@ -67,4 +67,4 @@ function ColorCalculator() {
   );
 }
 
-export default ColorCalculator
+export default ColorPicker

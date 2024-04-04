@@ -48,6 +48,10 @@ function SquareCalculator() {
     setArea(calculatedArea.toFixed(2))
   };
 
+  const handleWidthChange = e => setWidth(e.target.value)
+  const handleHeightChange = e => setHeight(e.target.value)
+  const handleDiameterChange = e => setDiameter(e.target.value)
+
   return (
     <div className="calculator">
       <h2>Площадь</h2>
@@ -69,15 +73,15 @@ function SquareCalculator() {
       <div className="input-group">
         <div className="input-container">
           <label htmlFor="width">Ширина</label>
-          <input type="number" id="width" value={width} onChange={(e) => setWidth(e.target.value)} />
+          <input type="number" id="width" value={width} onChange={handleWidthChange} />
         </div>
         <div className="input-container">
           <label htmlFor="height">Высота</label>
-          <input type="number" id="height" value={height} onChange={(e) => setHeight(e.target.value)} />
+          <input type="number" id="height" value={height} onChange={handleHeightChange} />
         </div>
         <div className="input-container">
           <label htmlFor="diameter">Диаметр</label>
-          <input type="number" id="diameter" value={diameter} onChange={(e) => setDiameter(e.target.value)} />
+          <input type="number" id="diameter" value={diameter} onChange={handleDiameterChange} />
         </div>
       </div>
       <div className='btn'>
