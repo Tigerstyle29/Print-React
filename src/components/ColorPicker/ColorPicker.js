@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './ColorPicker.css'
+import styled from 'styled-components'
 
 function ColorPicker() {
   const [inputCode, setInputCode] = useState('')
@@ -38,33 +38,98 @@ function ColorPicker() {
   };
 
   return (
-    <div className="PrintColor">
-      <div className="container">
-        <h1>Система цвета</h1>
-        <p>Выберите тип цвета и введите его значение (например, Pantone: 186 или CMYK: 0,100,100,0) и нажмите кнопку "Ввод":</p>
-        <select
+    <PrintColorContainer>
+      <Container>
+        <Heading>Система цвета</Heading>
+        <Paragraph>Выберите тип цвета и введите его значение (например, Pantone: 186 или CMYK: 0,100,100,0) и нажмите кнопку "Ввод":</Paragraph>
+        <Select
           value={colorType}
           onChange={(e) => setColorType(e.target.value)}
-          className="select"
         >
           <option value="pantone">Pantone</option>
           <option value="cmyk">CMYK</option>
-        </select>
-        <input
+        </Select>
+        <Input
           type="text"
           value={inputCode}
           onChange={(e) => setInputCode(e.target.value)}
           placeholder={`Введите значение ${colorType}`}
-          className="input"
         />
-        <button onClick={updateColor} className="button">Ввод</button>
-        <div
-          className="colorDisplay"
-          style={{ backgroundColor: `#${color}` }}
-        ></div>
-      </div>
-    </div>
-  );
+        <Button onClick={updateColor}>Ввод</Button>
+        <ColorDisplay style={{ backgroundColor: `#${color}` }}></ColorDisplay>
+      </Container>
+    </PrintColorContainer>
+  )
 }
+
+const PrintColorContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+`
+
+const Heading = styled.h1`
+  margin-top: 0;
+  color: #333;
+`
+
+const Paragraph = styled.p`
+  margin-bottom: 20px;
+  color: #666;
+`
+
+const Select = styled.select`
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`
+
+const Input = styled.input`
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+  }
+`
+
+const Button = styled.button`
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`
+
+const ColorDisplay = styled.div`
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+`
 
 export default ColorPicker
