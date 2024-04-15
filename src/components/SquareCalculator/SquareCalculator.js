@@ -7,6 +7,8 @@ function SquareCalculator() {
   const [diameter, setDiameter] = useState('')
   const [area, setArea] = useState('')
 
+
+
   const calculateArea = (size) => {
     let calculatedArea;
     switch (size) {
@@ -56,10 +58,7 @@ function SquareCalculator() {
     <CalculatorContainer>
       <Heading>Площадь</Heading>
       <Container>
-        <InputSquare>
-          <label htmlFor="square-cm">См<sup>2</sup></label>
-          <InputField type="text" id="square-cm" value={area} readOnly />
-        </InputSquare>
+      <Heading>Выберите формат</Heading>
         <ButtonGroup>
           <Button onClick={() => calculateArea('A1')}>A1</Button>
           <Button onClick={() => calculateArea('A2')}>A2</Button>
@@ -71,48 +70,51 @@ function SquareCalculator() {
       </Container>
   
       <InputGroup>
-        <InputContainer>
-          <label htmlFor="width">Ширина</label>
-          <InputField type="number" id="width" value={width} onChange={handleWidthChange} />
-        </InputContainer>
-        <InputContainer>
-          <label htmlFor="height">Высота</label>
-          <InputField type="number" id="height" value={height} onChange={handleHeightChange} />
-        </InputContainer>
-        <InputContainer>
-          <label htmlFor="diameter">Диаметр</label>
-          <InputField type="number" id="diameter" value={diameter} onChange={handleDiameterChange} />
-        </InputContainer>
+      <Heading>Или укажите размер</Heading>
+        <ContainerWrapper>
+          <InputContainer>
+            <label htmlFor="width">Ширина</label>
+            <InputField type="number" id="width" value={width} onChange={handleWidthChange} />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="height">Высота</label>
+            <InputField type="number" id="height" value={height} onChange={handleHeightChange} />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="diameter">Диаметр</label>
+            <InputField type="number" id="diameter" value={diameter} onChange={handleDiameterChange} />
+          </InputContainer>
+        </ContainerWrapper>
       </InputGroup>
-      <div className='btn'>
-        <Button className="btn-item" onClick={updateArea}>Рассчитать площадь</Button>
-      </div>
+      <InputSquare>
+          <InputField type="text" id="square-cm" value={area} readOnly />
+          <label htmlFor="square-cm">См<sup>2</sup></label>
+        </InputSquare>
     </CalculatorContainer>
   )
 }
 
 const CalculatorContainer = styled.div`
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid #ddd; 
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ddd; 
 `
 
 const Heading = styled.h2`
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #555;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #555;
 `
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 `
 
 export const ButtonGroup = styled.div`
@@ -126,6 +128,7 @@ export const Button = styled.button`
   color: #fff;
   border: 0;
   border-radius: 6px;
+  cursor: pointer;
   background-color: #FFA940;
 
   &:hover {
@@ -135,10 +138,17 @@ export const Button = styled.button`
 
 export const InputSquare = styled.div`
   display: flex;
-  flex-direction: column; 
-  align-self: center;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  justify-content: center;
+  margin-bottom: 10px;
+  
+  Input {
+    width: 56px;
+  }
+
+  label {
+    margin-left: 10px;
+    font-weight: bold;
+  }
 `
 
 export const InputField = styled.input`
@@ -156,6 +166,8 @@ export const InputField = styled.input`
 
 export const InputGroup = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   border-radius: 4px;
   overflow: hidden;
@@ -172,6 +184,11 @@ export const InputContainer = styled.div`
   border-radius: 15px;
   border: 2px solid #ddd;
 
+  label {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
   &:last-child {
     margin-right: 0;
   }
@@ -180,6 +197,11 @@ export const InputContainer = styled.div`
 export const Span = styled.span`
   margin-left: 5px;
   color: #666;
+`
+
+export const ContainerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `
 
 export default SquareCalculator
